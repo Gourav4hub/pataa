@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./bootstrap.min.css">
+        
+    </head>
+    <body onload="init()">
+        <h1>Employee Records</h1>
+        <hr>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <input type="text" id="namebox" class="form-control" placeholder="Employee Name">    
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <input type="text" id="mailbox" class="form-control" placeholder="Employee Email">    
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <select class="form-control" id="depbox">
+                        <option value="">Choose Department</option>
+                        <option>Development</option>
+                        <option>Testing</option>
+                        <option>Management</option>
+                        <option>HR</option>
+                    </select>    
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <label>Gender</label><br>
+                    <input type="radio" onchange="handleGender(this.value)" value="male" name="gender"> &nbsp; Male
+                    <br>
+                    <input type="radio" onchange="handleGender(this.value)" value="female" name="gender" checked> &nbsp; FeMale
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <label>Hobbies</label><br>
+                    <input type="checkbox" class="hobby" value="football"> &nbsp; Football
+                    <br>
+                    <input type="checkbox" class="hobby" value="cricket"> &nbsp; Cricket 
+                    <br>
+                    <input type="checkbox" class="hobby" value="music" checked> &nbsp; Music     
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <button onclick="add()" class="btn btn-success">Add Employee</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Gender</th>
+                    <th>Hobbies</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody id="tb">
+
+            </tbody>
+        </table>
+    </body>
+    <script src="./code.js"></script>
+</html>

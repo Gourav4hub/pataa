@@ -1,0 +1,8 @@
+Javascript : Client-Side Scripting Language
+
+    DOM Manipulation : Document Object Model
+
+Text Files
+Binary Files : Data : MetaData
+
+BOM / DOM

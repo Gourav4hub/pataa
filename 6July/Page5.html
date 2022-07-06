@@ -1,0 +1,20 @@
+<script>
+
+    function fun1()
+    {
+         console.log("Hello .....")
+    }    
+    function hello(ob)
+    {
+        function test(){
+            console.log("Good Evening !")
+            ob()
+        }
+        return test
+    }
+    var fun2  = hello(fun1)
+    fun2()
+    
+
+   
+</script>
