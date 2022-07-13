@@ -1,0 +1,13 @@
+
+
+	Dependancy : 
+	
+		Global
+		
+			npm install -g <ModuleName>
+		
+		Locale
+		
+			npm install --save <ModuleName>
+	
+	
