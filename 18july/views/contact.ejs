@@ -1,0 +1,50 @@
+<html>
+    <heaD>
+        <title>Express Web</title>
+        <link rel="stylesheet" href="css/bootstrap.css">
+    </heaD>
+
+    <body>
+        <h1>Contact Page</h1>
+        <br>
+        <a href="/"><b>Home</b></a> &nbsp;
+        <a href="/about"><b>About</b></a> &nbsp;
+        <a href="/contact"><b>Contact</b></a> &nbsp;
+        <hr>
+
+        <h3>Contact List</h3>
+        <ol>
+            <% contacts.forEach(ob=>{ %>
+                <li><%=ob.street%> , <%=ob.city%> , <%=ob.pincode%></li>
+            <% })  %>
+        </ol>
+
+        <h3>Contact List</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Street</th>
+                    <th>City</th>
+                    <th>Pincode</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% contacts.forEach(ob=>{ %>
+                    <tr> 
+                        <td><%=ob.street%></td>
+                        <td><%=ob.city%></td>
+                        <td><%=ob.pincode%></td>
+                    </tr>    
+                <% })  %>
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+       
+    </body>
+</html>

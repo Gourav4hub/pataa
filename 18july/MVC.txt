@@ -1,0 +1,24 @@
+
+	MVC : Model , View , Controller
+	
+	View : Presentation Layer
+	Controller : Controlling Layer
+	Model : Database + Business Logic
+	
+
+	View >>> Controller >>> Model >>> Controller >>> View
+	
+	
+	MVC-2 : Model , View , Controller
+	
+	View : Presentation Layer
+	Controller : Controlling Layer
+	Model : 
+		Database : Database Layer
+		Business Logic : Service Layer
+	
+
+	View >>> Controller >>> Service >>> Model >>> Service >>> Controller >>> View
+	
+
+	
