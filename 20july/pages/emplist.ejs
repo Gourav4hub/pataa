@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+    </head>
+    <body>
+        <h1 class="alert alert-danger text-center">Employee Records</h1>
+        <a href="/employee/save"><b>Add Employee</b></a>
+        <hr>
+        <table class="table table-striped table-hovered">
+            <thead>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Email</th>
+                <th>Salary</th>
+                <th>
+                    Operation
+                </th>
+            </thead>
+            <tbody>
+                <% records.forEach(rec=>{ %>
+                    <tr>
+                        <td><%=rec.empid%></td>
+                        <td><%=rec.emp_name%></td>
+                        <td><%=rec.emp_email%></td>
+                        <td><%=rec.emp_salary%></td>
+                        <td>
+                            <a href="/employee/delete/<%=rec.empid%>">
+                                <b class="btn btn-danger">Delete</b>
+                            </a>
+                            &nbsp;
+                            <a href="/employee/update/<%=rec.empid%>">
+                                <b class="btn btn-info">Update</b>
+                            </a>
+                        </td>
+                    </tr>    
+                <% }) %>
+            </tbody>
+        </table>
+    </body>
+</html>

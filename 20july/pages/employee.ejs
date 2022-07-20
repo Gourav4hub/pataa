@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+    </head>
+    <body onload="clear()">
+        <h1 class="alert alert-danger text-center">Add New Employee</h1>
+        <a href="/employee/list"><b>List Employee</b></a>
+        <hr>
+
+        <form action="/employee/save" method="post">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3">
+                        <input type="text" class="form-control" name="empname" placeholder="Employee Name" required>
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                        <input type="email" class="form-control" name="empemail" placeholder="Employee Email" required>
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                        <input type="number" class="form-control" name="empsal" placeholder="Employee Salary" required>
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                        <button class="btn btn-success" type="submit">Save Employee</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <b id="msgbox" class="text-danger"><%=msg%></b>
+    </body>
+
+    <script>
+        function clear(){
+            setTimeout(()=>{
+                document.getElementById('msgbox').innerText=""
+            },5000)
+        }
+    </script>
+</html>        
