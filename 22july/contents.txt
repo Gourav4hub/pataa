@@ -1,0 +1,71 @@
+	RDBMS : Schema DB
+	
+		Database
+		  Tables : Columns:Datatype
+		  	Records
+
+		Joins	
+
+	Unstructure / Bulk
+	
+	MongoDB : No Schema DB
+	
+		Database
+		   Collection
+		   	Document : ID
+			   	
+		   	
+	Schools / Colleges : GPS
+		
+	50Client : 5Buses : 2Trip	30 Seconds
+	
+		lat:lon:speed
+		
+		********************************************************
+		
+	show databases;
+	use pataadb;
+	db.createCollection('employee')
+	show collections;
+	db.employee.insertOne({emp_name:"Vikas",emp_age:34,emp_salary:45000})
+	db.employee.insertMany([{emp_name:"Lokesh",emp_city:'ujjain',emp_age:32,emp_salary:24000},{emp_name:"Brajesh",emp_age:25,emp_salary:32450}])
+	
+	db.employee.insert({emp_name:"Vikas",emp_age:34,emp_salary:45000})
+	
+	db.employee.find({emp_age:{$gte:31}}).pretty()
+	
+		$gt , $gte , $lt , $lte , $ne
+		
+		db.employee.find({},{emp_name:1,emp_age:1}).pretty()
+		
+	db.employee.find({$and:[{emp_age:{$gt:30}},{emp_salary:{$lt:15000}}]}).pretty()
+	
+	db.employee.find({$or:[{emp_age:{$gt:30}},{emp_salary:{$lt:15000}}]}).pretty()	
+	
+	db.employee.find({$and:[{$or:[{},{}]},
+				{emp_salary:{$lt:15000}}]}).pretty()
+
+	db.employee.updateOne({_id:ObjectId("62daa20b026e7718aedc98c3")},{$set:{emp_age:27,emp_salary:35000}})
+	
+	db.employee.updateMany({emp_age:{$gt:30}},{$set:{emp_salary:55000}})
+	
+	db.employee.remove({emp_age:25})
+	db.employee.drop()
+	
+	db.dropDatabase()
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		   	
