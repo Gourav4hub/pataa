@@ -1,0 +1,15 @@
+
+Admin : 
+	1. Category
+	2. Product
+	3. Deals and Offer
+
+
+	4. Searching
+
+3. Customer
+4. CustomerOrder
+	Order , OrderDetail , Payment	
+
+5. Shopping Cart
+	6. Feedback
