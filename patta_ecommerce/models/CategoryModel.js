@@ -1,54 +1,69 @@
-const mysqlConn = require('./MysqlConn')
-const format = require('string-format')
+const db = require('./MysqlConn')
 class CategoryModel
 {
-    saveCategory = async (data)=>{
-        return new Promise(async (resolve,reject)=>{
-            var conn = await mysqlConn().catch(errMsg=>{
-                console.log(errMsg)
-                reject(false)
-            }) 
-            var queryString = format("insert into category(cate_title,cate_description) value('{}','{}')",data.title,data.description)
-            console.log(queryString)
-            conn.query(queryString,(err,result)=>{
-                if(err) reject(false)
-                else {
-                    console.log(result)
-                    resolve(true)
-                }
-            }); 
-        })    
+    saveCategory = async (data)=>
+    {
+        return new Promise(async resolve=>{
+            var quString = `insert into category(cate_title,cate_description) value('${data.title}','${data.description}')`;
+            var result = await db.query(quString)
+            .catch(err=>resolve({status:false,msg:"Category Not Saved !"}));
+
+            resolve({status:true,msg:"Category Saved !"})
+        });        
     }
 
     listCategory = async (status=true)=>{
-        return new Promise(async (resolve,reject)=>{
-            var conn = await mysqlConn().catch(errMsg=>{
-                console.log(errMsg)
-                reject(false)
-            }) 
-            var queryString = format("select * from category where cate_status={}",status)
-            console.log(queryString)
-            conn.query(queryString,(err,records)=>{
-                if(err) reject(false)
-                else resolve(records)               
-            }); 
+        return new Promise(async resolve=>{
+            var result = await db.query(`select * from category where cate_status=${status}`)
+            .catch(err=>resolve({status:false,data:undefined}));
+            resolve({status:true,data:result[0]})
         })    
     }
 
-    getCategory = async (id)=>{
-        return new Promise(async (resolve,reject)=>{
-            var conn = await mysqlConn().catch(errMsg=>{
-                console.log(errMsg)
-                reject(false)
-            }) 
-            var queryString = format("select * from category where cate_id={}",id)
-            console.log(queryString)
-            conn.query(queryString,(err,records)=>{
-                if(err || records.length==0) reject(false)
-                else resolve(records[0])               
-            }); 
+    getCategory = async (id,isFalseSend)=>{
+        return new Promise(async resolve=>{
+            var result = await db.query(`select * from category where cate_id=${id}`)
+            .catch(err=>resolve({status:false,data:undefined}));
+            var data = result[0]
+            if(data.length==0)
+                resolve({status:false,data:undefined,msg:"Category Not Found !"})
+            else
+            {
+                var ob = data[0]
+                if(ob.cate_status || (ob.cate_status==false && isFalseSend))
+                    resolve({status:true,data:ob})
+                else
+                    resolve({status:true,data:undefined,msg:"Unable To Send !"})
+            }
         })    
+    }
+
+    deleteCategory = async (id,status)=>{
+        return new Promise(async resolve=>{
+            var result = await db.query(`update category set cate_status=${status} where cate_id=${id}`)
+            .catch(err=>resolve({status:false,msg:"Not Changed !"}));
+            var rows = result[0].affectedRows
+            if(rows>0)
+                resolve({status:true,msg:"Category Status Updated !"})
+            else
+                resolve({status:false,msg:"Category Not found !"})
+        })
     }
 }
 
 module.exports = new CategoryModel()
+
+
+/*
+deleteCategory = async (id)=>{
+        return new Promise(async resolve=>{
+            var result = await db.query(`delete from category where cate_id=${id}`)
+            .catch(err=>resolve({status:false,msg:"Not Deleted !"}));
+            var rows = result[0].affectedRows
+            if(rows>0)
+                resolve({status:true,msg:"Category Deleted !"})
+            else
+                resolve({status:false,msg:"Category Not found !"})
+        })
+    }
+*/

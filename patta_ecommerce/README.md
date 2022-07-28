@@ -1,1 +1,1 @@
-npm install --save express path string-format mysql mongoose cors dotenv
+npm install --save express path mysql2 dotenv

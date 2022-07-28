@@ -5,31 +5,37 @@ const router = express.Router()
 // Save Category
 router.post("",async (request,response)=>{
     var data = request.body
-    var status = await categoryModel.saveCategory(data).catch(status=>response.json({status}));
-    response.json({status})
+    var result = await categoryModel.saveCategory(data)
+    response.json(result)
 })
 
 // Update Category
-router.put("",(request,response)=>{
+router.put("/:id",(request,response)=>{
     response.send("Update")
 })
 
 // List Category
-router.get("",async (request,response)=>{
-    var records = await categoryModel.listCategory(true).catch(status=>response.json({status}));
-    response.json({records})
+router.get("/:status?",async (request,response)=>{
+    console.log(request.params.status)
+    var result = await categoryModel.listCategory(request.params.status)
+    response.json(result)
 })
 
 // Get Category
 router.get("/:id",async (request,response)=>{
     var id = request.params.id
-    var record = await categoryModel.getCategory(id).catch(status=>response.json({status}));
-    response.json({record})
+    var record = await categoryModel.getCategory(id,true)
+    response.json(record)
 })
 
 // SoftDelete Category
-router.delete("",(request,response)=>{
-    response.send("Delete")
+router.delete("/:id",async (request,response)=>{
+    var id = request.params.id
+    var record = await categoryModel.deleteCategory(id,false)
+    response.json(record)
 })
 
 module.exports = router;
+
+
+
