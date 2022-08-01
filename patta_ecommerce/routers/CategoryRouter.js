@@ -1,18 +1,12 @@
 const express = require('express')
-const Joi = require('joi')
-const validator = require('express-joi-validation').createValidator({})
-
 
 const categoryModel = require('../models/CategoryModel')
-const validation = require('./Validation')
+const validation = require('./validation/Validation')
+const {categorySchema} = require("./validation/Schemas")
 const router = express.Router()
 
 // Save Category
-const saveSchema = Joi.object({
-    title: Joi.string().required(),
-    description: Joi.string()
-  })
-router.post("",validation(saveSchema),async (request,response)=>{
+router.post("",validation(categorySchema),async (request,response)=>{
     var data = request.body
     console.log(data)
     var result = await categoryModel.saveCategory(data)
