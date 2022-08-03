@@ -1,6 +1,6 @@
 const express = require('express')
 
-const {sequelize , Student} = require("./models/index")
+const {sequelize , Student } = require("./models/index")
 const server = express()
 server.use(express.json())
 
