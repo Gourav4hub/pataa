@@ -1,9 +1,33 @@
 
 category
 product
-
-customer
-order
-orderitems
 productcomment
-customerfeedback
+
+customer : update , changepassword
+order : placeorder , get , myorders
+orderitems : itemid,orderid,productid,price,qty
+
+cart : cartid , customerid , productid , qty
+orderfeedback
+
+*********************
+
+Rajesh  : OrderPlace
+
+    Order : orderid:1
+
+        Product :    
+                  OrderItem :13 : MobileCover   350
+
+Mahesh  : OrderPlace
+
+    Order : orderid:2
+
+        Product : OrderItem :12  : Shirt:4         340  
+                  OrderItem:13  : Pendrive      899                  
+
+
+
+
+
+
