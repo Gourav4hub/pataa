@@ -4,6 +4,11 @@ const {Customer} = require('../models/index')
 
 const router = express.Router()
 
+router.post("/placeorder",(req,res)=>
+{
+    
+})
+
 router.get("/myinfo",async (req,res)=>
 {
     try {
