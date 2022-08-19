@@ -1,0 +1,1 @@
+{"services":{"employee":{"host":"http://localhost","port":8081},"salary":{"host":"http://localhost","port":8082}}}
