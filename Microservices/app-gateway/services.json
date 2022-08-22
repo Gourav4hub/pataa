@@ -1,1 +1,30 @@
-{"services":{"employee":{"host":"http://localhost","port":8081},"salary":{"host":"http://localhost","port":8082}}}
+{
+    "services": {
+        "employee": {
+            "instances": [
+                {
+                    "uuid": "c53b4fa2-942d-4248-86ba-c6abd262c826",
+                    "reqCount": 0,
+                    "lastHealthTime": 1661177556641,
+                    "info": {
+                        "host": "http://localhost",
+                        "port": 8082
+                    }
+                }
+            ]
+        },
+        "salary": {
+            "instances": [
+                {
+                    "uuid": "a9757b45-d7a9-45f0-8c73-ab66de242cac",
+                    "reqCount": 9,
+                    "lastHealthTime": 1661177560470,
+                    "info": {
+                        "host": "http://localhost",
+                        "port": 8084
+                    }
+                }
+            ]
+        }
+    }
+}

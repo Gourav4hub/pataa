@@ -6,19 +6,20 @@ const server = express()
 server.use(express.json())
 
 server.use("",empRouter)
-
-server.listen(8081,()=>
+server.get("/health",(req,res)=>res.status(200).json({status:true}))
+var PORT = 8082
+server.listen(PORT,()=>
 {
-    console.log("Employee Service : http://localhost:8081")
+    console.log("Employee Service : http://localhost:"+PORT)
     axios({
         method: "POST",
-        url: "http://localhost:8083/register",
+        url: "http://localhost:8089/register",
         headers: {
             'Content-Type': "application/json"
         },
         data: { name : "employee" , info : 
         { 
-            host: "http://localhost", port : 8081 
+            host: "http://localhost", port : PORT 
         }}
     }).then(response =>console.log(response.data))
     .catch(err=>console.log("Not Registered !"))
